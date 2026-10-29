@@ -2,8 +2,14 @@
 	"name": "tg666/dependent-select-box",
 	"type": "library",
 	"description": "Dependent Select Box for Nette Framework.",
-	"keywords": ["nette", "nasext", "DependentSelectBox"],
-	"license": ["MIT"],
+	"keywords": [
+		"nette",
+		"nasext",
+		"DependentSelectBox"
+	],
+	"license": [
+		"MIT"
+	],
 	"authors": [
 		{
 			"name": "Dusan Hudak"
@@ -17,21 +23,25 @@
 		}
 	],
 	"require": {
-		"php": ">=7.1",
-		"nette/application": "^2.4 || ^3.0.0",
-		"nette/forms": "^3.1.0",
-		"nette/utils": "^2.4 || ^3.0.0 || ^4.0.0"
+		"php": "^8.3",
+		"nette/application": "^3.1.15",
+		"nette/component-model": "^3.0.3",
+		"nette/forms": "^3.2",
+		"nette/utils": "^3.2.10 || ^4.0.1"
 	},
 	"require-dev": {
-		"nette/di": "^2.4.6 || ^3.0.0",
-		"nette/robot-loader": "^2.4 || ^3.0.0 || ^4.0.0",
-		"nette/bootstrap": "^2.4 || ^3.0.0",
-		"nette/http": "^2.4 || ^3.0.0",
-		"tracy/tracy": "^2.4 || ^3.0.0",
-		"nette/tester": "^2.0",
-		"latte/latte": "^2.4 || ^3.0.0"
+		"latte/latte": "^3.0",
+		"nette/bootstrap": "^3.1",
+		"nette/di": "^3.1.3",
+		"nette/http": "^3.2",
+		"nette/robot-loader": "^4.0",
+		"nette/tester": "^2.6",
+		"roave/security-advisories": "dev-latest",
+		"tracy/tracy": "^2.10"
 	},
 	"autoload": {
-		"classmap": ["src/"]
+		"classmap": [
+			"src/"
+		]
 	}
 }

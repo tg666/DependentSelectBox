@@ -1,10 +1,10 @@
-# NasExt/DependentSelectBox
+# Dependent Select Box
 DependentSelectBox for [Nette Framework](https://nette.org). This dependent select box support dependence for more form controls , not only for select boxes but also dependence for text input, textarea and more.
 
 ## Installation
-The best way to install NasExt/DependentSelectBox is using [Composer](http://getcomposer.org/):
+The best way to install the package is using [Composer](https://getcomposer.org/):
 ```sh
-$ composer require nasext/dependent-select-box
+$ composer require tg666/dependent-select-box
 ```
 
 
@@ -168,7 +168,7 @@ You can set the select box as disabled with `setDisabledWhenEmpty(true)` when em
 ```php
 $form->addDependentSelectBox('city', 'City', $form['country'])
 	->setDependentCallback(function ($values) use ($citySlovakia, $cityCzechia, $cityUsa) {
-		$data = new \NasExt\Forms\Controls\DependentSelectBoxData;
+		$data = new \NasExt\Forms\DependentData;
 
 		if ($values['country'] === 1) {
 			$data->setItems($citySlovakia);

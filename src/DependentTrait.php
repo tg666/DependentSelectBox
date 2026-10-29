@@ -11,6 +11,7 @@
 
 namespace NasExt\Forms;
 
+use BackedEnum;
 use NasExt;
 use Nette;
 
@@ -64,7 +65,7 @@ trait DependentTrait
 
 		$attrs['data-dependentselectbox-parents'] = Nette\Utils\Json::encode($parents);
 		$attrs['data-dependentselectbox-params'] = Nette\Utils\Json::encode($params);
-		$attrs['data-dependentselectbox'] = $form->getPresenter()->link($this->lookupPath('Nette\\Application\\UI\\Presenter') . Nette\ComponentModel\IComponent::NAME_SEPARATOR . self::SIGNAL_NAME . '!');
+		$attrs['data-dependentselectbox'] = $form->getPresenter()->link($this->lookupPath('Nette\\Application\\UI\\Presenter') . Nette\ComponentModel\IComponent::NameSeparator . self::SIGNAL_NAME . '!');
 
 		$control->addAttributes($attrs);
 		return $control;
@@ -72,14 +73,16 @@ trait DependentTrait
 
 
 	/**
-	 * @return string|int
+	 * Returns selected key.
+	 * @return string|int|null
 	 */
 	public function getValue(): mixed
 	{
 		$this->tryLoadItems();
 
 		if (!in_array($this->tempValue, [null, '', []], true)) {
-			return $this->tempValue;
+			// a disabled item can't be selected, nette/forms checks it only for the loaded items
+			return is_scalar($this->tempValue) && is_array($this->disabled) && isset($this->disabled[$this->tempValue]) ? null : $this->tempValue;
 		}
 
 		return parent::getValue();
@@ -87,8 +90,10 @@ trait DependentTrait
 
 
 	/**
-	 * @param string|int $value
-	 * @return self
+	 * Sets selected item (by key).
+	 * @param  string|int|BackedEnum|null  $value
+	 * @return static
+	 * @internal
 	 */
 	public function setValue($value)
 	{
@@ -127,7 +132,7 @@ trait DependentTrait
 
 		$dependentData = call_user_func_array($this->dependentCallback, $args);
 
-		if (!($dependentData instanceof NasExt\Forms\DependentData) && !($dependentData instanceof NasExt\Forms\Controls\DependentSelectBoxData)) {
+		if (!($dependentData instanceof NasExt\Forms\DependentData)) {
 			throw new NasExt\Forms\DependentCallbackException('Callback for "' . $this->getHtmlId() . '" must return NasExt\\Forms\\DependentData instance!');
 		}
 
