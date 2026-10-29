@@ -98,6 +98,8 @@ final class BasePresenter extends Nette\Application\UI\Presenter
 	protected function createComponentDependentSelectForm1()
 	{
 		$form = new Nette\Application\UI\Form;
+		$form->allowCrossOrigin(); // the test requests have no Sec-Fetch-Site header
+		$form->onSuccess[] = static function (): void {}; // nette/forms 3.2.0 warns about a submitted form without handlers
 
 		$form->addSelect('select', 'Select', [1 => 'First', 2 => 'Second'])
 			->setPrompt('---');
@@ -116,6 +118,8 @@ final class BasePresenter extends Nette\Application\UI\Presenter
 	protected function createComponentDependentSelectForm2()
 	{
 		$form = new Nette\Application\UI\Form;
+		$form->allowCrossOrigin(); // the test requests have no Sec-Fetch-Site header
+		$form->onSuccess[] = static function (): void {}; // nette/forms 3.2.0 warns about a submitted form without handlers
 
 		$form->addSelect('select', 'Select', [1 => 'First', 2 => 'Second', 3 => 'Third'])
 			->setPrompt('---');
@@ -204,6 +208,8 @@ final class BasePresenter extends Nette\Application\UI\Presenter
 	protected function createComponentDependentMultiSelectForm1()
 	{
 		$form = new Nette\Application\UI\Form;
+		$form->allowCrossOrigin(); // the test requests have no Sec-Fetch-Site header
+		$form->onSuccess[] = static function (): void {}; // nette/forms 3.2.0 warns about a submitted form without handlers
 
 		$form->addSelect('select', 'Select', [1 => 'First', 2 => 'Second'])
 			->setPrompt('---');
@@ -221,6 +227,8 @@ final class BasePresenter extends Nette\Application\UI\Presenter
 	protected function createComponentDependentMultiSelectForm2()
 	{
 		$form = new Nette\Application\UI\Form;
+		$form->allowCrossOrigin(); // the test requests have no Sec-Fetch-Site header
+		$form->onSuccess[] = static function (): void {}; // nette/forms 3.2.0 warns about a submitted form without handlers
 
 		$form->addSelect('select', 'Select', [1 => 'First', 2 => 'Second', 3 => 'Third'])
 			->setPrompt('---');

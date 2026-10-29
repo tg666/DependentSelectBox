@@ -19,6 +19,6 @@ require_once __DIR__ . '/app/router/Router.php';
 
 Tester\Environment::setup();
 
-define('TEMP_DIR', __DIR__ . '/tmp/' . lcg_value());
+define('TEMP_DIR', __DIR__ . '/tmp/' . uniqid('', true));
 @mkdir(dirname(TEMP_DIR));
 @mkdir(TEMP_DIR);

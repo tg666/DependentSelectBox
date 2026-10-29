@@ -44,17 +44,15 @@ class DependentMultiSelectBox extends Nette\Forms\Controls\MultiSelectBox implem
 
 
 	/**
-	 * @throws $value
-	 * @param bool
-	 * @return self
+	 * @throws Nette\InvalidArgumentException
 	 */
-	public function setDisabled($value = true)
+	public function setDisabled(array|bool $state = true): static
 	{
-		if (is_array($value)) {
+		if (is_array($state)) {
 			throw new Nette\InvalidArgumentException('NasExt\\Forms\\Controls\\DependentMultiSelectBox not supported disabled items!');
 		}
 
-		return parent::setDisabled($value);
+		return parent::setDisabled($state);
 	}
 
 

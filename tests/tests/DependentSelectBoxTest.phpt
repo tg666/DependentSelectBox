@@ -76,11 +76,12 @@ final class DependentSelectBoxTest extends Tester\TestCase
 		Tester\Assert::count(1, $data);
 
 		$foo = (array) $data[0];
-		Tester\Assert::count(4, $foo['@attributes']);
+		Tester\Assert::count(5, $foo['@attributes']);
 		Tester\Assert::same($control->getAttribute('name'), $foo['@attributes']['name']);
 		Tester\Assert::same($control->getAttribute('id'), $foo['@attributes']['id']);
 		Tester\Assert::same($control->getAttribute('data-dependentselectbox'), $foo['@attributes']['data-dependentselectbox']);
 		Tester\Assert::same($control->getAttribute('data-dependentselectbox-parents'), $foo['@attributes']['data-dependentselectbox-parents']);
+		Tester\Assert::same($control->getAttribute('data-dependentselectbox-params'), $foo['@attributes']['data-dependentselectbox-params']);
 
 		Tester\Assert::same('Select select first', $foo['option']);
 	}
@@ -100,7 +101,7 @@ final class DependentSelectBoxTest extends Tester\TestCase
 
 		$presenter = $presenterFactory->createPresenter('Base');
 		$presenter->autoCanonicalize = false;
-		$request = new Nette\Application\Request('Base', 'POST', ['action' => 'dependentSelect1'], ['_do' => 'dependentSelectForm1-submit'], ['select' => 1, 'dependentSelect' => 1]);
+		$request = new Nette\Application\Request('Base', 'POST', ['action' => 'dependentSelect1'], ['_do' => 'dependentSelectForm1-submit'], ['select' => '1', 'dependentSelect' => '1']);
 		$response = $presenter->run($request);
 
 		Tester\Assert::true($response instanceof Nette\Application\Responses\TextResponse);
@@ -130,7 +131,7 @@ final class DependentSelectBoxTest extends Tester\TestCase
 
 		$presenter = $presenterFactory->createPresenter('Base');
 		$presenter->autoCanonicalize = false;
-		$request = new Nette\Application\Request('Base', 'POST', ['action' => 'dependentSelect1'], ['_do' => 'dependentSelectForm1-submit'], ['select' => 1, 'dependentSelect' => 3]);
+		$request = new Nette\Application\Request('Base', 'POST', ['action' => 'dependentSelect1'], ['_do' => 'dependentSelectForm1-submit'], ['select' => '1', 'dependentSelect' => '3']);
 		$response = $presenter->run($request);
 	}
 
@@ -185,8 +186,8 @@ final class DependentSelectBoxTest extends Tester\TestCase
 		Tester\Assert::same([
 			'id' => 'frm-dependentSelectForm1-dependentSelect',
 			'items' => [
-				1 => ['key' => 1, 'value' => 'First', 'attributes' => ['value' => 1]],
-				2 => ['key' => 2, 'value' => 'Still first', 'attributes' => ['value' => 2]],
+				['key' => 1, 'value' => 'First', 'attributes' => ['value' => 1]],
+				['key' => 2, 'value' => 'Still first', 'attributes' => ['value' => 2]],
 			],
 			'value' => null,
 			'prompt' => '---',
@@ -259,7 +260,7 @@ final class DependentSelectBoxTest extends Tester\TestCase
 
 		$presenter = $presenterFactory->createPresenter('Base');
 		$presenter->autoCanonicalize = false;
-		$request = new Nette\Application\Request('Base', 'POST', ['action' => 'dependentSelect2Disabled1'], ['_do' => 'dependentSelectForm2-submit'], ['select' => 1, 'dependentSelect' => 2]);
+		$request = new Nette\Application\Request('Base', 'POST', ['action' => 'dependentSelect2Disabled1'], ['_do' => 'dependentSelectForm2-submit'], ['select' => '1', 'dependentSelect' => '2']);
 		$response = $presenter->run($request);
 
 
@@ -286,7 +287,7 @@ final class DependentSelectBoxTest extends Tester\TestCase
 
 		$presenter = $presenterFactory->createPresenter('Base');
 		$presenter->autoCanonicalize = false;
-		$request = new Nette\Application\Request('Base', 'POST', ['action' => 'dependentSelect2Disabled2'], ['_do' => 'dependentSelectForm2-submit'], ['select' => 1, 'dependentSelect' => 2]);
+		$request = new Nette\Application\Request('Base', 'POST', ['action' => 'dependentSelect2Disabled2'], ['_do' => 'dependentSelectForm2-submit'], ['select' => '1', 'dependentSelect' => '2']);
 		$response = $presenter->run($request);
 
 
@@ -313,7 +314,7 @@ final class DependentSelectBoxTest extends Tester\TestCase
 
 		$presenter = $presenterFactory->createPresenter('Base');
 		$presenter->autoCanonicalize = false;
-		$request = new Nette\Application\Request('Base', 'POST', ['action' => 'dependentSelect2Disabled3'], ['_do' => 'dependentSelectForm2-submit'], ['select' => 3]);
+		$request = new Nette\Application\Request('Base', 'POST', ['action' => 'dependentSelect2Disabled3'], ['_do' => 'dependentSelectForm2-submit'], ['select' => '3']);
 		$response = $presenter->run($request);
 
 
