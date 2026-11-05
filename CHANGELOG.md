@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-11-05
+
+### Fixed
+
+- The package replaces `nasext/dependent-select-box` 5.2.0 (the same namespace `NasExt\Forms` and classes), Composer no longer installs both of them when another package requires the original.
+
 ## [2.0.0] - 2026-10-29
 
 ### Added
@@ -41,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - The return type of `DependentTrait::getValue()` is `mixed`.
 
-[Unreleased]: https://github.com/tg666/DependentSelectBox/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/tg666/DependentSelectBox/compare/2.0.1...HEAD
+[2.0.1]: https://github.com/tg666/DependentSelectBox/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/tg666/DependentSelectBox/compare/1.0.0...2.0.0
 [1.0.0]: https://github.com/tg666/DependentSelectBox/releases/tag/1.0.0
